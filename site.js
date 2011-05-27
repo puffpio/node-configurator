@@ -1,5 +1,4 @@
 (function () {
-  //var http = require('http');
   var express = require('express');
   var routes = require('./routes.js');
   var db = require('./database.js');
@@ -15,7 +14,7 @@
   };
 
   app.configure(site.configure);
-  routes.register(app);
+  routes.register(app, db);
 
   app.listen(3000);
 })();
