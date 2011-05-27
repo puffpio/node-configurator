@@ -1,6 +1,7 @@
 (function () {
   var http = require('http');
   var express = require('express');
+  var db = require('./database.js');
   var app = express.createServer();
 
   var site = {
