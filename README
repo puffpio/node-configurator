@@ -1,0 +1,7 @@
+needs:
+
+nodejs
+mongodb
+
+expressjs
+mongoskin
