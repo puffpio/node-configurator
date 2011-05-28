@@ -7,7 +7,11 @@ exports.register = function (app, db) {
   });
   // Inserts stuff into the test collection and returns the document
   app.get('/test/insert', function (req, res) {
-    var testobject = { foo: 'bar' };
+    var testobject = {
+      foo: 'bar',
+      func: function() { return true; }
+    };
+
     db.test.insert(testobject, function (err, records) {
       if (err) {
         res.send(err);
@@ -16,4 +20,4 @@ exports.register = function (app, db) {
       }
     });
   });
-}
+};

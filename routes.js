@@ -6,4 +6,4 @@ exports.register = function (app, db) {
   });
 
   testController.register(app, db);
-}
+};
