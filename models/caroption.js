@@ -1,18 +1,18 @@
 // factory for a new car option
-exports.carOption = function () {
+exports.carOption = function (name, description, price, isSelected) {
   return {
-    name: "",
-    description: "",
-    price: 0,
-    isSelected: false
+    name: name === undefined ? '' : name,
+    description: description === undefined ? '' : description,
+    price: price === undefined ? 0 : price,
+    isSelected: isSelected === undefined ? false : isSelected
   };
 };
 
 // factory for a grouping of car options
-exports.carOptionGroup = function() {
+exports.carOptionGroup = function(name, description, options) {
   return {
-    name: "",
-    description: "",
-    options: []
+    name: name === undefined ? '' : name,
+    description: description === undefined ? '' : description,
+    options: options === undefined ? [] : options
   };
 };
