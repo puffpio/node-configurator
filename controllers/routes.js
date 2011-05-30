@@ -1,4 +1,4 @@
-var testController = require('./controllers/test.js');
+var testController = require('./test.js');
 
 exports.register = function (app, db) {
   app.get('/car/:carID', function (req, res) {

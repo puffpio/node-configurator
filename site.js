@@ -1,5 +1,5 @@
 var express = require('express');
-var routes = require('./routes.js');
+var routes = require('./controllers/routes.js');
 var db = require('./dataaccess/database.js');
 var app = express.createServer();
 
