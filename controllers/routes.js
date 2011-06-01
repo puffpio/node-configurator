@@ -1,9 +1,7 @@
 var testController = require('./test.js');
+var carsController = require('./cars.js');
 
-exports.register = function (app, db) {
-  app.get('/car/:carID', function (req, res) {
-    res.send('car ' + req.params.carID);
-  });
-
+exports.register = function (app, db, models) {
   testController.register(app, db);
+  carsController.register(app, db, models);
 };

@@ -1,6 +1,8 @@
 var express = require('express');
 var routes = require('./controllers/routes.js');
 var db = require('./dataaccess/database.js');
+var models = require('./models/models.js');
+
 var app = express.createServer();
 
 var site = {
@@ -13,6 +15,6 @@ var site = {
 };
 
 app.configure(site.configure);
-routes.register(app, db);
+routes.register(app, db, models);
 
 app.listen(3000);

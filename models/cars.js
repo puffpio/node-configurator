@@ -1,6 +1,8 @@
-var co = require('./caroption.js');
+var co = require('./caroptions.js');
 
-exports.CAR1 = {
+exports.canyonero = {
+  name: 'Canyonero',
+  description: 'Go anywhere',
   colorOptionGroup: co.carOptionGroup(
     'Colors',
     'Car Colors',
@@ -12,4 +14,9 @@ exports.CAR1 = {
     ]
   ),
   navigation: co.carOption('Navigation', 'Never get lost!', 1500, false)
+};
+
+exports.t9000 = {
+  name: 'T9000',
+  description: 'its metal'
 };
