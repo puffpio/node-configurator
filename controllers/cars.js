@@ -1,3 +1,5 @@
+var mu = require('../mu_temp/mu');
+
 exports.register = function (app, db, models) {
   // Gets the choices for a specific car
   app.get('/cars/:index', function (req, res) {
@@ -19,6 +21,6 @@ exports.register = function (app, db, models) {
       };
     });
 
-    res.send(result);
+    mu.r('cars.html', { cars: result }, res);
   });
 };

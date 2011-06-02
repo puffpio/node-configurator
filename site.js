@@ -5,8 +5,8 @@ var db = require('./dataaccess/database');
 var models = require('./models/models');
 
 mu.templateRoot = './templates';
-mu.r = function(filename, context, options, res) {
-  mu.render(filename, context, options, function (err, output) {
+mu.r = function(filename, context, res) {
+  mu.render(filename, context, { cached: true }, function (err, output) {
     if (err) {
       throw err;
     }
