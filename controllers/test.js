@@ -26,6 +26,6 @@ exports.register = function (app, db) {
 
   // test endpoint for mu
   app.get('/test/mu', function(req, res) {
-    mu.r('test', {}, res);
+    mu.r('test.html', {}, res);
   });
 };
