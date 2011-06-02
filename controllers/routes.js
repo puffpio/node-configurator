@@ -1,5 +1,5 @@
-var testController = require('./test.js');
-var carsController = require('./cars.js');
+var testController = require('./test');
+var carsController = require('./cars');
 
 exports.register = function (app, db, models) {
   testController.register(app, db);

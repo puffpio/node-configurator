@@ -1,7 +1,10 @@
 var express = require('express');
-var routes = require('./controllers/routes.js');
-var db = require('./dataaccess/database.js');
-var models = require('./models/models.js');
+var mu = require('./mu_temp/mu');
+var routes = require('./controllers/routes');
+var db = require('./dataaccess/database');
+var models = require('./models/models');
+
+mu.templateRoot = './templates';
 
 var app = express.createServer();
 

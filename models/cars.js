@@ -1,4 +1,4 @@
-var co = require('./caroptions.js');
+var co = require('./caroptions');
 
 exports.canyonero = {
   name: 'Canyonero',

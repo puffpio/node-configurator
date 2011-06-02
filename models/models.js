@@ -1,5 +1,5 @@
-var co = require('./caroptions.js');
-var c = require('./cars.js');
+var co = require('./caroptions');
+var c = require('./cars');
 
 exports.caroptions = co;
 exports.cars = c;

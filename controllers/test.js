@@ -1,3 +1,5 @@
+var mu = require('../mu_temp/mu');
+
 exports.register = function (app, db) {
   // Returns the number of documents in the test collection
   app.get('/test/count', function (req, res) {
@@ -5,6 +7,7 @@ exports.register = function (app, db) {
       res.send(count.toString());
     });
   });
+
   // Inserts stuff into the test collection and returns the document
   app.get('/test/insert', function (req, res) {
     var testobject = {
@@ -18,6 +21,20 @@ exports.register = function (app, db) {
       } else {
         res.send(records);
       }
+    });
+  });
+
+  // test endpoint for mu
+  app.get('/test/mu', function(req, res) {
+    mu.render('test.html', {}, { cached: true }, function (err, output) {
+      if (err) {
+       throw err;
+      }
+
+      var buffer = '';
+
+      output.addListener('data', function (c) {buffer += c; })
+            .addListener('end', function () { res.send(buffer); });
     });
   });
 };
