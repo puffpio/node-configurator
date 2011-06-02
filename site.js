@@ -5,6 +5,7 @@ var db = require('./dataaccess/database');
 var models = require('./models/models');
 
 mu.templateRoot = './templates';
+mu.templateExtension ='mustache';
 mu.r = function(filename, context, res) {
   mu.render(filename, context, { cached: true }, function (err, output) {
     if (err) {

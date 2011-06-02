@@ -21,6 +21,6 @@ exports.register = function (app, db, models) {
       };
     });
 
-    mu.r('cars.html', { cars: result }, res);
+    mu.r('cars', { cars: result }, res);
   });
 };
