@@ -5,6 +5,16 @@ var db = require('./dataaccess/database');
 var models = require('./models/models');
 
 mu.templateRoot = './templates';
+mu.r = function(filename, context, options, res) {
+  mu.render(filename, context, options, function (err, output) {
+    if (err) {
+      throw err;
+    }
+
+    output.addListener('data', function (c) { res.write(c); })
+          .addListener('end', function() { res.end(); });
+  });
+};
 
 var app = express.createServer();
 

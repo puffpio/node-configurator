@@ -26,15 +26,6 @@ exports.register = function (app, db) {
 
   // test endpoint for mu
   app.get('/test/mu', function(req, res) {
-    mu.render('test.html', {}, { cached: true }, function (err, output) {
-      if (err) {
-       throw err;
-      }
-
-      var buffer = '';
-
-      output.addListener('data', function (c) {buffer += c; })
-            .addListener('end', function () { res.send(buffer); });
-    });
+    mu.r('test.html', {}, { cached: true }, res);
   });
 };
