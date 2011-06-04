@@ -10,9 +10,9 @@ mu.templateExtension ='mustache';
 // render!
 mu.r = function(filename, context, isClientRender, res) {
   if (isClientRender) {
-    mu.clientRender(filename + '.partial', context, res);
+    mu.clientRender(filename, context, res);
   } else {
-    mu.serverRender(filename + '.html', context, res);
+    mu.serverRender(filename + '.serverside.html', context, res);
   }
 };
 
@@ -31,7 +31,10 @@ mu.serverRender = function(filename, context, res) {
 // write context and partial template to JS, let client deal with it
 mu.clientRender = function(filename, context, res) {
   fs.readFile(
-    path.join(mu.templateRoot, filename + '.' + mu.templateExtension),
+    path.join(
+      mu.templateRoot,
+      filename + '.partial.html.' + mu.templateExtension
+    ),
     function(err, data) {
       if (err) {
         throw err;
@@ -42,7 +45,7 @@ mu.clientRender = function(filename, context, res) {
         template: JSON.stringify(data.toString('utf8'))
       };
 
-      mu.serverRender('clientside.html', result, res);
+      mu.serverRender(filename + '.clientside.html', result, res);
     }
   );
 };
