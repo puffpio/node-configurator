@@ -5,7 +5,7 @@ exports.register = function (app, db, models) {
   app.get('/cars/:index', function (req, res) {
     var index = req.params.index;
     if (index !== undefined && models.cars[index] !== undefined) {
-      res.send(models.cars[index]);
+      mu.r('model', models.cars[index], !!req.query.t, res);
       return;
     }
     res.send('Car not found');
