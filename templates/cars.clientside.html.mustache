@@ -4,9 +4,14 @@
 </head>
 <body>
 <div id='woot'></div>
+<script type='text/javascript' src='/mustache.js' ></script>
 <script type='text/javascript'>
   var context = {{{context}}};
   var template = {{{template}}};
+
+  var html = Mustache.to_html(template, context);
+  var element = document.getElementById('woot');
+  element.innerHTML = html;
 </script>
 </body>
 </html>
