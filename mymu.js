@@ -8,11 +8,11 @@ mu.templateRoot = './templates';
 mu.templateExtension ='mustache';
 
 // render!
-mu.r = function(filename, context, isClientRender, res) {
-  if (isClientRender) {
-    mu.clientRender(filename, context, res);
-  } else {
+mu.r = function(filename, context, isServerRender, res) {
+  if (isServerRender) {
     mu.serverRender(filename + '.serverside.html', context, res);
+  } else {
+    mu.clientRender(filename, context, res);
   }
 };
 
