@@ -1,1 +1,57 @@
-foobar
+<h1>
+  {{name}} - {{description}}
+</h1>
+<br /><br />
+{{#options}}
+  {{#isCarOption}}
+    {{#isSelected}}
+      <input
+        type='checkbox'
+        name='{{id}}'
+        id='{{id}}'
+        checked='checked'
+      />
+    {{/isSelected}}
+    {{^isSelected}}
+      <input
+        type='checkbox'
+        name='{{id}}'
+        id='{{id}}'
+      />
+    {{/isSelected}}
+    <label for='{{id}}'>
+      {{name}} - {{description}} - ${{price}}
+    </label>
+    <br /><br />
+  {{/isCarOption}}
+  {{#isCarOptionGroup}}
+    <span>
+      {{name}} - {{description}}
+    </span>
+    <br />
+    {{#groupOptions}}
+      {{#isSelected}}
+        <input
+          type='radio'
+          name='{{groupId}}'
+          id='{{id}}'
+          value='{{id}}'
+          checked='checked'
+        />
+      {{/isSelected}}
+      {{^isSelected}}
+        <input
+          type='radio'
+          name='{{groupId}}'
+          id='{{id}}'
+          value='{{id}}'
+        />
+      {{/isSelected}}
+      <label for='{{id}}'>
+        {{name}} - {{description}} - ${{price}}
+      </label>
+      <br />
+    {{/groupOptions}}
+    <br /><br />
+  {{/isCarOptionGroup}}
+{{/options}}
