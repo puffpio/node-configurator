@@ -6,7 +6,10 @@ exports.carOption = function (id, name, description, price, isSelected) {
     description: description === undefined ? '' : description,
     price: price === undefined ? 0 : price,
     isSelected: isSelected === undefined ? false : isSelected,
-    isCarOption: true
+    isCarOption: true,
+    setSelected: function() {
+      this.isSelected = true;
+    }
   };
 };
 
@@ -21,6 +24,11 @@ exports.carOptionGroup = function(id, name, description, options) {
     name: name === undefined ? '' : name,
     description: description === undefined ? '' : description,
     groupOptions: options === undefined ? [] : options,
-    isCarOptionGroup: true
+    isCarOptionGroup: true,
+    setSelected: function(id) {
+      for (var i = 0; i < this.groupOptions.length; i++) {
+        this.groupOptions[i].isSelected = this.groupOptions[i].id == id;
+      }
+    }
   };
 };

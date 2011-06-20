@@ -12,8 +12,17 @@ exports.register = function (app, db, models) {
   });
   // Gets a specific car configuration
   app.get('/cars/:index/:id', function (req, res) {
-    var index = req.params.index;
-    if (index !== undefined && models.cars[index] !== undefined) {
+    if (req.params.index !== undefined &&
+        models.cars[req.params.index] !== undefined &&
+        req.params.id !== undefined) {
+      db.cars.findById(req.params.id, function(err, result) {
+        if (err) {
+          res.send(err);
+        } else {
+          mu.r('model', result, !!req.query.t, res);
+        }
+      });
+      return;
     }
     res.send('Car not found');
   });
@@ -22,7 +31,26 @@ exports.register = function (app, db, models) {
     var index = req.params.index;
     if (index !== undefined && models.cars[index] !== undefined) {
       var car = models.carinstances[index]();
-      console.log(req.body);
+      
+      // tranform car options into an associative array for direct lookup
+      var options = {};
+      for (var i = 0; i < car.options.length; i++) {
+        options[car.options[i].id] = car.options[i];
+      }
+
+      for (var key in req.body) {
+        if (options[key] !== undefined) {
+          options[key].setSelected(req.body[key]);
+        }
+      }
+
+      db.cars.saveCar(car, function(err, id) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.redirect('/cars/' + index + '/' + id);
+        }
+      });
     }
   });
   // Enumerates the cars

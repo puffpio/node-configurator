@@ -10,11 +10,11 @@ db.bind('test');
 // collection holding all the car configurations
 db.bind('cars', {
   saveCar : function(car, callback) {
-    this.insert(car, function(err, record) {
+    this.insert(car, function(err, records) {
       if (err) {
         callback(err);
       } else {
-        callback(null, record._id);
+        callback(null, records[0]._id);
       }
     });
   }
