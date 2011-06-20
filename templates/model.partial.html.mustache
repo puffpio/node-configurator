@@ -2,56 +2,63 @@
   {{name}} - {{description}}
 </h1>
 <br /><br />
-{{#options}}
-  {{#isCarOption}}
-    {{#isSelected}}
-      <input
-        type='checkbox'
-        name='{{id}}'
-        id='{{id}}'
-        checked='checked'
-      />
-    {{/isSelected}}
-    {{^isSelected}}
-      <input
-        type='checkbox'
-        name='{{id}}'
-        id='{{id}}'
-      />
-    {{/isSelected}}
-    <label for='{{id}}'>
-      {{name}} - {{description}} - ${{price}}
-    </label>
-    <br /><br />
-  {{/isCarOption}}
-  {{#isCarOptionGroup}}
-    <span>
-      {{name}} - {{description}}
-    </span>
-    <br />
-    {{#groupOptions}}
+<form method='post' >
+  {{#options}}
+    {{#isCarOption}}
       {{#isSelected}}
         <input
-          type='radio'
-          name='{{groupId}}'
+          type='checkbox'
+          name='{{id}}'
           id='{{id}}'
-          value='{{id}}'
           checked='checked'
         />
       {{/isSelected}}
       {{^isSelected}}
         <input
-          type='radio'
-          name='{{groupId}}'
+          type='checkbox'
+          name='{{id}}'
           id='{{id}}'
-          value='{{id}}'
         />
       {{/isSelected}}
       <label for='{{id}}'>
         {{name}} - {{description}} - ${{price}}
       </label>
+      <br /><br />
+    {{/isCarOption}}
+    {{#isCarOptionGroup}}
+      <span>
+        {{name}} - {{description}}
+      </span>
       <br />
-    {{/groupOptions}}
-    <br /><br />
-  {{/isCarOptionGroup}}
-{{/options}}
+      {{#groupOptions}}
+        {{#isSelected}}
+          <input
+            type='radio'
+            name='{{groupId}}'
+            id='{{id}}'
+            value='{{id}}'
+            checked='checked'
+          />
+        {{/isSelected}}
+        {{^isSelected}}
+          <input
+            type='radio'
+            name='{{groupId}}'
+            id='{{id}}'
+            value='{{id}}'
+          />
+        {{/isSelected}}
+        <label for='{{id}}'>
+          {{name}} - {{description}} - ${{price}}
+        </label>
+        <br />
+      {{/groupOptions}}
+      <br /><br />
+    {{/isCarOptionGroup}}
+  {{/options}}
+  <br /><br />
+  <input
+    type='submit'
+    value='Save'
+  />
+</form>

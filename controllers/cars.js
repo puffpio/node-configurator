@@ -10,6 +10,21 @@ exports.register = function (app, db, models) {
     }
     res.send('Car not found');
   });
+  // Gets a specific car configuration
+  app.get('/cars/:index/:id', function (req, res) {
+    var index = req.params.index;
+    if (index !== undefined && models.cars[index] !== undefined) {
+    }
+    res.send('Car not found');
+  });
+  // Saves a car configuration
+  app.post('/cars/:index', function (req, res) {
+    var index = req.params.index;
+    if (index !== undefined && models.cars[index] !== undefined) {
+      var car = models.carinstances[index]();
+      console.log(req.body);
+    }
+  });
   // Enumerates the cars
   app.get('/cars', function (req, res) {
     var keys = Object.keys(models.cars);
